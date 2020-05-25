@@ -16,7 +16,6 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
 	"strconv"
 
 	"github.com/spf13/cobra"
@@ -46,7 +45,7 @@ to quickly create a Cobra application.`,
 
 		todos, err := ReadData()
 		if err != nil {
-			fmt.Println(err)
+			ErrorMsg(err)
 			return
 		}
 
@@ -58,7 +57,7 @@ to quickly create a Cobra application.`,
 
 		err = WriteData(todos)
 		if err != nil {
-			fmt.Println(err)
+			ErrorMsg(err)
 			return
 		}
 	},

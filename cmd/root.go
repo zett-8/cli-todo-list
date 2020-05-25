@@ -45,7 +45,7 @@ to quickly create a Cobra application.`,
 
 		todos, err := ReadData()
 		if err != nil {
-			fmt.Println(err)
+			ErrorMsg(err)
 			return
 		}
 

@@ -16,7 +16,6 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
 	"strconv"
 
 	"github.com/spf13/cobra"
@@ -45,74 +44,71 @@ to quickly create a Cobra application.`,
 
 		todos, err := ReadData()
 		if err != nil {
-			fmt.Println(err)
+			ErrorMsg(err)
 			return
 		}
 
-		fmt.Println(args)
-
-		// delete by flags
-		if tag != "" || all || done {
-
-			var deleteTodos []Todo
-			if all {
-				deleteTodos = todos
-			}
-
-			if done {
-				var tmp []Todo
-				for _, v := range todos {
-					if v.done {
-						tmp = append(tmp, v)
-					}
-				}
-				deleteTodos = tmp
-			}
-
-			if tag != "" && len(deleteTodos) > 0 {
-				var tmp []Todo
-				for _, v := range deleteTodos {
-					if v.containsTag(tag) {
-						tmp = append(tmp, v)
-					}
-				}
-
-				deleteTodos = tmp
-			}
-
-			var deleteIds IntList
-			for _, v := range deleteTodos {
-				deleteIds = append(deleteIds, v.id)
-			}
-
+		// delete by args
+		if len(nums) > 0 {
 			var filtered []Todo
-			for _, v := range todos {
-				if !deleteIds.contains(v.id) {
-					filtered = append(filtered, v)
+			for i, todo := range todos {
+				if !nums.contains(i + 1) {
+					filtered = append(filtered, todo)
 				}
 			}
+			todos = filtered
 
-			err = WriteData(filtered)
+			err = WriteData(todos)
 			if err != nil {
-				fmt.Println(err)
+				ErrorMsg(err)
 				return
 			}
 
 			return
 		}
 
-		// delete by args
+		// delete by flags
+		var deleteTodos []Todo
+		if all {
+			deleteTodos = todos
+		}
+
+		if done {
+			var tmp []Todo
+			for _, v := range todos {
+				if v.done {
+					tmp = append(tmp, v)
+				}
+			}
+			deleteTodos = tmp
+		}
+
+		if tag != "" && len(deleteTodos) > 0 {
+			var tmp []Todo
+			for _, v := range deleteTodos {
+				if v.containsTag(tag) {
+					tmp = append(tmp, v)
+				}
+			}
+
+			deleteTodos = tmp
+		}
+
+		var deleteIds IntList
+		for _, v := range deleteTodos {
+			deleteIds = append(deleteIds, v.id)
+		}
+
 		var filtered []Todo
-		for i, todo := range todos {
-			if !nums.contains(i + 1) {
-				filtered = append(filtered, todo)
+		for _, v := range todos {
+			if !deleteIds.contains(v.id) {
+				filtered = append(filtered, v)
 			}
 		}
-		todos = filtered
 
-		err = WriteData(todos)
+		err = WriteData(filtered)
 		if err != nil {
-			fmt.Println(err)
+			ErrorMsg(err)
 			return
 		}
 

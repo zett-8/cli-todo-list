@@ -46,24 +46,32 @@ func (t Todo) containsTag(tag string) bool {
 func getFilePath() string {
 	path, err := os.Executable()
 	if err != nil {
-		fmt.Println(err)
+		ErrorMsg(err)
 	}
 
 	return filepath.Join(path + "_data.txt")
+}
+
+func ErrorMsg(err error) {
+	if os.Getenv("APP_ENV") == "dev" {
+		fmt.Println(err)
+	} else {
+		fmt.Println("oops, something went wrong")
+	}
 }
 
 func ReadData() ([]Todo, error) {
 
 	f, err := os.OpenFile(getFilePath(), os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
-		fmt.Println(err)
+		ErrorMsg(err)
 		return nil, err
 	}
 	defer f.Close()
 
 	b, err := ioutil.ReadFile(getFilePath())
 	if err != nil {
-		fmt.Println(err)
+		ErrorMsg(err)
 		return nil, err
 	}
 

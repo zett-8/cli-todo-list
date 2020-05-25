@@ -15,8 +15,12 @@ limitations under the License.
 */
 package main
 
-import "todo/cmd"
+import (
+	"todo/cmd"
+)
 
 func main() {
+	// os.Setenv("APP_ENV", "dev")
+
 	cmd.Execute()
 }
