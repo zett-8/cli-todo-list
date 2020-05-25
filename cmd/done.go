@@ -23,8 +23,9 @@ import (
 
 // doneCmd represents the done command
 var doneCmd = &cobra.Command{
-	Use:   "done",
-	Short: "A brief description of your command",
+	Use:     "done",
+	Aliases: []string{"dn", "fin", "finished", "did"},
+	Short:   "A brief description of your command",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 
