@@ -160,3 +160,11 @@ func ConsoleList(todos []Todo, tag string, without bool) {
 		fmt.Printf("%s %s   %s\n", numberColumn, todo, tags)
 	}
 }
+
+func Reset() {
+	err := os.Remove(getFilePath())
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+}
