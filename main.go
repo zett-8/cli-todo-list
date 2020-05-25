@@ -21,6 +21,5 @@ import (
 
 func main() {
 	// os.Setenv("APP_ENV", "dev")
-
 	cmd.Execute()
 }

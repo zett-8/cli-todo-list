@@ -87,7 +87,7 @@ func ReadData() ([]Todo, error) {
 		todo := sp[0]
 		tags := strings.Split(sp[1], " ")
 
-		if todo[:2] == "!!" {
+		if len(todo) > 2 && todo[:2] == "!!" {
 			done = true
 			todo = todo[2:]
 		}
@@ -157,6 +157,6 @@ func ConsoleList(todos []Todo, tag string, without bool) {
 		}
 		tags := color.MagentaString(strings.Join(t.tags, " "))
 
-		fmt.Printf("%s  %s   %s\n", numberColumn, todo, tags)
+		fmt.Printf("%s %s   %s\n", numberColumn, todo, tags)
 	}
 }
