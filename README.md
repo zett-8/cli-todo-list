@@ -21,6 +21,9 @@ go get -u https://github.com/Zett-8/cli-todo-list
 ```
 
 #### binary
+[Mac](https://github.com/Zett-8/cli-todo-list/releases/tag/mac)  
+[Windows](https://github.com/Zett-8/cli-todo-list/releases/tag/window)  
+[Linux](https://github.com/Zett-8/cli-todo-list/releases/tag/linux)  
 
 
 ## How to use
