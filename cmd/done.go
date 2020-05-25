@@ -25,13 +25,10 @@ import (
 var doneCmd = &cobra.Command{
 	Use:     "done",
 	Aliases: []string{"dn", "fin", "finished", "did"},
-	Short:   "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short:   "Set todo as done",
+	Long: `You can set your todo done by this command.
+Put numbers you want to set it done.
+e.g.  todo done 2 12 4 `,
 	Run: func(cmd *cobra.Command, args []string) {
 		var nums IntList
 

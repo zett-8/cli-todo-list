@@ -30,13 +30,9 @@ var cfgFile string
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "todo",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Todo list",
+	Long: `You can see your todo list by this command. 
+	use -t flag to filter with tags or use -w flag to show list without already done todos`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	Run: func(cmd *cobra.Command, args []string) {
@@ -69,12 +65,12 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.todo.yaml)")
+	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.todo.yaml)")
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
-	rootCmd.Flags().StringP("tag", "t", "", "Help message for toggle")
-	rootCmd.Flags().BoolP("without", "w", false, "Help message for toggle")
+	rootCmd.Flags().StringP("tag", "t", "", "filter by tags. e.g. 'todo -t @home'")
+	rootCmd.Flags().BoolP("without", "w", false, "only show unfinished todos")
 }
 
 // initConfig reads in config file and ENV variables if set.

@@ -25,13 +25,11 @@ import (
 var addCmd = &cobra.Command{
 	Use:     "add",
 	Aliases: []string{"create", "make", "new"},
-	Short:   "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short:   "Add new todo. use '@' to add with tags",
+	Long: `You can add new todo by this command. Use quotes to wrap your todo.
+To add todo with tags put '@' before tag name.
+e.g.  todo add 'call John til 4pm' @work`,
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) == 0 {
 			fmt.Println("you need to type what to do!")

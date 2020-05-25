@@ -25,13 +25,11 @@ import (
 var deleteCmd = &cobra.Command{
 	Use:     "delete",
 	Aliases: []string{"del"},
-	Short:   "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short:   "Delete todo",
+	Long: `You can delete your todo by this command.
+	Put numbers you want to delete.
+	e.g.  todo delete 2 12 4
+	`,
 	Run: func(cmd *cobra.Command, args []string) {
 		var nums IntList
 		tag, _ := cmd.Flags().GetString("tag")
@@ -128,7 +126,7 @@ func init() {
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	deleteCmd.Flags().StringP("tag", "t", "", "Help message for toggle")
-	deleteCmd.Flags().BoolP("all", "a", false, "Help message for toggle")
-	deleteCmd.Flags().BoolP("done", "d", false, "Help message for toggle")
+	deleteCmd.Flags().StringP("tag", "t", "", "Filter by tag")
+	deleteCmd.Flags().BoolP("all", "a", false, "Delete all(or tag-filtered) todos")
+	deleteCmd.Flags().BoolP("done", "d", false, "Delete all(or tag-filtered) finished todos")
 }
