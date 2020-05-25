@@ -1,9 +1,12 @@
-# Todo
-***Grouping by project ?***  
-***Setting date ?***  
-***Sharing data ?***  
+<div align="center"><img src="https://github.com/Zett-8/images/blob/master/cli-todo/sample.gif" /></div>
 
-### Nope!
+# Todo
+***Labeling ?***  
+***Grouping ?***  
+***Date setting ?***  
+***Data sharing ?***  
+
+### **Nope!**
 
 This is dead simple todo.  
 Just add, check, and delete it.  
@@ -22,9 +25,21 @@ go get -u https://github.com/Zett-8/cli-todo-list
 
 ## How to use
 
-### Show list
+### list
+```terminal
+todo
+```
 
-### Add todo
+filtered by tag
+```terminal
+todo -t @home
+```
+
+without finished todo
+```terminal
+todo -w
+```
+### Add
 ```terminal
 todo add 'buy milk' @chore
 
@@ -34,7 +49,7 @@ todo add 'buy milk' @chore
 [3] buy milk   @chore
 ```
 
-### Check todo
+### Check
 ```terminal
 todo done 2
 
@@ -44,7 +59,7 @@ todo done 2
 [3] buy milk   @chore
 ```
 
-### delete todo
+### Delete
 delete by ID
 ```terminal
 todo delete 2
