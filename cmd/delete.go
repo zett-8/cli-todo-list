@@ -63,8 +63,6 @@ var deleteCmd = &cobra.Command{
 				return
 			}
 
-			ConsoleList(todos, "", false)
-
 			return
 		}
 
@@ -112,8 +110,6 @@ var deleteCmd = &cobra.Command{
 			ErrorMsg(err)
 			return
 		}
-
-		ConsoleList(todos, "", false)
 
 		return
 	},
